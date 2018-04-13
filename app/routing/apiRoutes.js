@@ -25,28 +25,45 @@ module.exports = function (app) {
         var diffArray = [];
         for (var i = 0; i < friendsData.length; i++){
             // 2nd goes through each score
-            
-            var friendScore = friendsData[i].scores
+
+
+            // -----------------
+
+            // for (i = 0; i < friendsArray.length; i++) {
+            //     var diff = 0
+            //     console.log("friend array scores " +friendsArray[i].scores.length);
+            //     for (j = 0; j < friendsArray[i].scores.length; j++) {
+            //         diff += Math.abs(friendsArray[i].scores[j] - newFriend.scores[j]);
+            //     }
+            //     diffArray.push(diff)
+            //     console.log(diffArray);
+            // }
+            // ----------- 
             var diff = 0;
             //console.log(friendScore);
-            for (var j = 0; j < friendScore.length; j++) {
+            for (var j = 0; j < friendsData[i].scores.length; j++) {
                 //diff += -- same as diff = diff + [math calculating]
-                diff += Math.abs(friendScore[j] - newFriend.scores[j]);
+                diff += Math.abs(friendsData[i].scores[j] - newFriend.scores[j]);
                 // push to the diffArray
-                diffArray.push(diff);
+                
                 // find the min value in that array
                 // console.log(diffArray);
             }
+            diffArray.push(diff);
             // diffArray = [1, 2, 3]
-            matchedFriend = Math.min(...diffArray[i]);
+            console.log(diffArray)
+
+            // for(int i=0; i<friendsData.)
+            // diffArray[]
+            var newFriIn = diffArray.indexOf(Math.min.apply(null, diffArray));
             // Math.min.apply(null, diffArray);
+            matchedFriend = friendsData[newFriIn]
+            // matchedFriend = [minVal];
             console.log(matchedFriend);
         }
             
-            
-            friendsData.push(req.body);
-            res.json(matchedFriend);
-            alertMessage(matchedFriend);
+        friendsData.push(req.body);
+        res.json(matchedFriend)
     });
 
     // I added this below code so you could clear out the table while working with the functionality.
